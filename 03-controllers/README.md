@@ -1,0 +1,35 @@
+# Controllers in Spring Boot
+
+## What is a Controller?
+
+A Controller is a Java class that:
+- Receives HTTP requests from browser
+- Decides what to do with the request
+- Returns a response
+
+## What is @RestController?
+
+@RestController tells Spring:
+- This class will handle web requests
+- The return value should be sent directly as response
+
+## What is @GetMapping?
+
+@GetMapping is used to:
+- Map a URL to a Java method
+- Example:
+  /hello → hello() method
+
+## Example Flow
+
+1. User opens browser
+2. User hits URL:
+   http://localhost:8080/hello
+3. Spring finds matching controller method
+4. That method runs
+5. Return value is sent to browser
+
+## Why Controllers are Needed?
+
+- They connect the outside world (HTTP) to our Java code
+- They are entry point of the application
