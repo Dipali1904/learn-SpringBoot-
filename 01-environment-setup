@@ -1,0 +1,32 @@
+# Environment Setup & First Spring Boot App
+
+## What I Did
+
+- Installed IntelliJ IDEA
+- Installed JDK
+- Created a new Spring Boot project
+- Ran the application successfully
+- Opened application in browser using:
+  http://localhost:8080
+
+## What I Learned
+
+- What is an IDE (IntelliJ)
+- What is JDK and why it is needed
+- How to create a Spring Boot project
+- What is Maven
+- What is pom.xml
+- How Spring Boot application starts
+
+## Project Structure Explained
+
+- src/main/java → main Java code
+- src/main/resources → config files
+- application.properties → application configuration
+- pom.xml → dependencies and project info
+
+## How Spring Boot Runs
+
+- main() method runs
+- Spring Boot starts embedded Tomcat server
+- Application becomes ready to accept requests
