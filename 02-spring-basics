@@ -1,0 +1,49 @@
+# Spring Boot Basics
+
+## What is Spring?
+
+Spring is a Java framework that helps us build:
+- Web applications
+- Enterprise applications
+- Microservices
+
+It provides:
+- Dependency Injection
+- Easy configuration
+- Many ready-made features
+
+## What is Spring Boot?
+
+Spring Boot is built on top of Spring.
+
+Spring Boot:
+- Makes Spring **easy to use**
+- Removes a lot of configuration
+- Gives ready-to-use project setup
+- Has embedded server (Tomcat)
+
+## Why Spring Boot is Popular?
+
+- No XML configuration
+- Auto configuration
+- Embedded server
+- Easy to create REST APIs
+- Production-ready features
+
+## What is a Spring Boot Project?
+
+A Spring Boot project is a normal Java project that:
+- Has a main class
+- Starts a web server
+- Runs like a normal Java program
+
+## What Happens When We Run a Spring Boot App?
+
+1. main() method starts
+2. Spring Boot starts the server (Tomcat)
+3. Spring creates all objects (beans)
+4. Application waits for requests
+
+## Basic Request Flow
+
+Browser → Controller → Service → (Repository) → Response
