@@ -1,0 +1,137 @@
+# JPA, Hibernate, Entity & Repository in Spring Boot
+
+## What is Database?
+
+Database is used to:
+- Store data permanently
+- Retrieve data when needed
+- Update and delete data
+
+Example:
+- Employee data is stored in database table.
+
+---
+
+## What is ORM?
+
+ORM = Object Relational Mapping
+
+It means:
+> Java Class ↔ Database Table
+
+Example:
+- Java class `Employee` ↔ Table `employee`
+
+So instead of writing SQL, we work with Java objects.
+
+---
+
+## What is JPA?
+
+JPA = Java Persistence API
+
+- JPA is a **standard** (rules) for working with databases in Java
+- It does NOT do the actual work
+- It only defines **how** the work should be done
+
+---
+
+## What is Hibernate?
+
+Hibernate is:
+- An **implementation of JPA**
+- It does the actual database work
+- Spring Boot uses Hibernate internally
+
+In simple words:
+> JPA = rules  
+> Hibernate = worker  
+
+---
+
+## What is @Entity?
+`@Entity` tells Spring:
+> This Java class should be stored in database as a table.
+
+## Example:
+
+@Entity
+public class Employee {
+    private Long id;
+    private String name;
+    private String email;
+}
+
+## What is @Id?
+
+@Id means:
+This field is the Primary Key of table.
+
+@Id
+private Long id;
+
+## What is @GeneratedValue?
+
+@GeneratedValue means:
+Database will automatically generate the ID.
+
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Long id;
+
+So you do NOT need to send ID manually.
+
+## What is Repository?
+
+Repository is:
+-> A Java interface
+-> Used to talk to database
+-> Spring automatically creates its implementation
+
+## What is JpaRepository?
+
+JpaRepository is a ready-made interface which gives methods like:
+save()
+findAll()
+findById()
+deleteById()
+
+Example:
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+}
+
+## How Data is Saved?
+repository.save(employee);
+Hibernate will convert Java object → SQL → store in DB.
+
+## How Data is Read?
+repository.findAll();
+repository.findById(id);
+
+## H2 Database (In-Memory)
+
+-> H2 is a simple database
+-> Data is deleted when app stops
+-> Good for learning and testing
+
+## Automatic Table Creation
+
+This property:
+spring.jpa.hibernate.ddl-auto=update
+
+Means:
+Hibernate will automatically create/update tables.
+
+## Full Flow
+Controller → Service → Repository → Hibernate → Database
+
+## Why JPA + Hibernate is Powerful?
+
+-> No SQL needed
+-> Less code
+-> Faster development
+-> Clean and readable code
+
+Summary
+JPA is a standard for database operations. Hibernate is its implementation.
+@Entity maps Java class to table. Repository is used to perform database operations using JpaRepository.
