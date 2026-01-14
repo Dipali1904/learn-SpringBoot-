@@ -64,6 +64,18 @@ public class GlobalExceptionHandler {
 
 ---------------------------------------------------------------------
 
+## Flow :
+
+Service throws Exception
+↓
+Controller stops
+↓
+Spring finds GlobalExceptionHandler
+↓
+Returns clean error message
+
+---------------------------------------------------------------------
+
 ## What is Validation?
 
 Validation means:
