@@ -1,0 +1,110 @@
+# Exception Handling & Validation in Spring Boot
+
+## What is an Exception?
+
+Exception means:
+> An error that happens while program is running.
+
+Examples:
+- Employee not found
+- Wrong ID passed
+- Bad request data
+
+---
+
+## Why We Need Exception Handling?
+
+Without exception handling:
+- Application crashes
+- User gets ugly error
+- No proper message
+
+With exception handling:
+- Clean error response
+- Proper HTTP status
+- Better user experience
+
+---
+
+## Custom Exception Example
+
+```java
+public class EmployeeNotFoundException extends RuntimeException {
+    public EmployeeNotFoundException(String message) {
+        super(message);
+    }
+}
+
+## What is @ControllerAdvice?
+
+@ControllerAdvice means:
+This class will handle errors for the whole application.
+It is global error handler.
+
+## What is @ExceptionHandler?
+
+@ExceptionHandler:
+Catches specific exception
+Returns proper response
+
+Example:
+@ControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(EmployeeNotFoundException.class)
+    public ResponseEntity<String> handleNotFound(EmployeeNotFoundException ex) {
+        return ResponseEntity.status(404).body(ex.getMessage());
+    }
+}
+
+## What is Validation?
+
+Validation means:
+Checking data before saving it.
+
+Examples:
+Name should not be empty
+Email should not be null
+
+## Validation Annotations
+Annotation	          Meaning
+@NotNull	        Cannot be null
+@NotBlank	        Cannot be empty
+@Email	          Must be valid email
+
+## Example in Entity: 
+
+@NotBlank
+private String name;
+
+@NotBlank
+@Email
+private String email;
+
+## How to Activate Validation?
+
+Add:
+@Valid
+
+in controller:
+@PostMapping("/employees")
+public Employee create(@Valid @RequestBody Employee employee) {
+    return service.createEmployee(employee);
+}
+
+## What Happens if Data is Wrong?
+
+-> Spring automatically throws error
+-> Returns 400 Bad Request
+
+## Typical Error Flow
+Controller → Exception → ControllerAdvice → Proper Response
+
+## Why This is Important?
+
+-> Prevents bad data
+-> Improves API quality
+-> Makes app production-ready
+
+Summary 
+Exception handling is used to handle runtime errors gracefully using @ControllerAdvice and @ExceptionHandler. Validation is used to check input data using annotations like @NotBlank and @Email.
