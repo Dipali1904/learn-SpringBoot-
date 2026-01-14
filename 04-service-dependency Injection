@@ -1,0 +1,113 @@
+# Service Layer & Dependency Injection in Spring Boot
+
+## What is Service Layer?
+
+Service layer is the part of application where:
+- Business logic is written
+- Actual work is done (calculations, saving data, updating data, etc.)
+- Controller calls Service
+- Service calls Repository
+
+In simple words:
+> Controller = handles request  
+> Service = does the real work  
+
+---
+
+## Why Do We Need Service Layer?
+
+We use Service layer because:
+
+- Keeps Controller clean
+- Follows proper project structure
+- Makes code reusable
+- Makes application easy to maintain and test
+
+Without Service:
+- Controller becomes very big
+- Code becomes messy
+- Hard to manage in big projects
+
+---
+
+## Example of Service Interface
+
+public interface EmployeeService {
+
+    Employee createEmployee(Employee employee);
+
+    List<Employee> getAllEmployees();
+
+    Employee getEmployeeById(Long id);
+}
+
+## Example of Service Implementation
+@Service
+public class EmployeeServiceImpl implements EmployeeService {
+
+    private final EmployeeRepository repository;
+
+    public EmployeeServiceImpl(EmployeeRepository repository) {
+        this.repository = repository;
+    }
+
+    @Override
+    public Employee createEmployee(Employee employee) {
+        return repository.save(employee);
+    }
+}
+
+## What is @Service?
+
+@Service tells Spring:
+This class contains business logic and should be managed by Spring.
+
+Spring will:
+Create object of this class automatically
+Store it in memory
+Give it to Controller when needed
+
+## What is Dependency Injection (DI)?
+
+Dependency Injection means:
+Spring creates objects for us and gives them when we need them.
+
+We do NOT use:
+new EmployeeServiceImpl()
+Spring does it automatically.
+
+## Constructor Injection (Best Practice)
+private final EmployeeService employeeService;
+
+public EmployeeController(EmployeeService employeeService) {
+    this.employeeService = employeeService;
+}
+
+This means:
+Spring gives the object of EmployeeService automatically
+We do not create it manually
+
+## Why "private final"?
+private final EmployeeService employeeService;
+
+-> private → cannot be changed from outside
+-> final → cannot be changed after constructor
+-> Makes code safe and clean
+
+## Flow of Call
+Browser / Postman
+        ↓
+    Controller
+        ↓
+     Service
+        ↓
+   Repository
+        ↓
+    Database
+
+## Why We Do NOT Write Logic in Controller?
+
+Because:
+Controller should only handle HTTP
+Service should handle business logic
+This makes code clean and professional
