@@ -10,7 +10,7 @@ Examples:
 - Wrong ID passed
 - Bad request data
 
----
+---------------------------------------------------------------------
 
 ## Why We Need Exception Handling?
 
@@ -24,7 +24,7 @@ With exception handling:
 - Proper HTTP status
 - Better user experience
 
----
+---------------------------------------------------------------------
 
 ## Custom Exception Example
 
@@ -35,17 +35,23 @@ public class EmployeeNotFoundException extends RuntimeException {
     }
 }
 
+---------------------------------------------------------------------
+
 ## What is @ControllerAdvice?
 
 @ControllerAdvice means:
 This class will handle errors for the whole application.
 It is global error handler.
 
+---------------------------------------------------------------------
+
 ## What is @ExceptionHandler?
 
 @ExceptionHandler:
 Catches specific exception
 Returns proper response
+
+---------------------------------------------------------------------
 
 Example:
 @ControllerAdvice
@@ -57,6 +63,8 @@ public class GlobalExceptionHandler {
     }
 }
 
+---------------------------------------------------------------------
+
 ## What is Validation?
 
 Validation means:
@@ -66,11 +74,15 @@ Examples:
 Name should not be empty
 Email should not be null
 
+---------------------------------------------------------------------
+
 ## Validation Annotations
 Annotation	          Meaning
 @NotNull	        Cannot be null
 @NotBlank	        Cannot be empty
 @Email	          Must be valid email
+
+---------------------------------------------------------------------
 
 ## Example in Entity: 
 
@@ -80,6 +92,8 @@ private String name;
 @NotBlank
 @Email
 private String email;
+
+---------------------------------------------------------------------
 
 ## How to Activate Validation?
 
@@ -92,6 +106,8 @@ public Employee create(@Valid @RequestBody Employee employee) {
     return service.createEmployee(employee);
 }
 
+---------------------------------------------------------------------
+
 ## What Happens if Data is Wrong?
 
 -> Spring automatically throws error
@@ -100,11 +116,15 @@ public Employee create(@Valid @RequestBody Employee employee) {
 ## Typical Error Flow
 Controller → Exception → ControllerAdvice → Proper Response
 
+---------------------------------------------------------------------
+
 ## Why This is Important?
 
 -> Prevents bad data
 -> Improves API quality
 -> Makes app production-ready
+
+---------------------------------------------------------------------
 
 Summary 
 Exception handling is used to handle runtime errors gracefully using @ControllerAdvice and @ExceptionHandler. Validation is used to check input data using annotations like @NotBlank and @Email.
