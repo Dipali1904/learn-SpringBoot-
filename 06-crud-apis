@@ -1,0 +1,130 @@
+# REST APIs & CRUD Operations in Spring Boot
+
+## What is REST API?
+
+REST API is a way to:
+- Send data from client to server
+- Receive data from server to client
+- Using HTTP methods like GET, POST, PUT, DELETE
+
+REST = Representational State Transfer
+
+---------------------------------------------------------------------------
+
+## What is CRUD?
+
+CRUD means:
+
+- C = Create
+- R = Read
+- U = Update
+- D = Delete
+
+These are the 4 basic operations of any backend application.
+
+---------------------------------------------------------------------------
+
+## HTTP Methods Mapping
+
+| Operation | HTTP Method | Spring Annotation |
+|----------|-------------|------------------|
+| Create   | POST        | @PostMapping     |
+| Read     | GET         | @GetMapping      |
+| Update   | PUT         | @PutMapping      |
+| Delete   | DELETE      | @DeleteMapping   |
+
+---------------------------------------------------------------------------
+
+## 1. POST — Create Resource
+
+Used to send data from client to server.
+
+```java
+@PostMapping("/employees")
+public Employee createEmployee(@RequestBody Employee employee) {
+    return employeeService.createEmployee(employee);
+}
+
+Example Request (JSON):
+{
+  "name": "Dipali",
+  "email": "dipali@gmail.com"
+}
+
+---------------------------------------------------------------------------
+
+2. GET — Read Resource
+Get All:
+@GetMapping("/employees")
+public List<Employee> getAllEmployees() {
+    return employeeService.getAllEmployees();
+}
+
+Get By ID:
+@GetMapping("/employees/{id}")
+public Employee getEmployeeById(@PathVariable Long id) {
+    return employeeService.getEmployeeById(id);
+}
+
+## What is @RequestBody?
+
+@RequestBody:
+Converts JSON → Java Object automatically
+Used in POST and PUT requests
+
+
+## What is @PathVariable?
+
+@PathVariable:
+Reads value from URL
+
+Example:
+@GetMapping("/employees/{id}")
+
+If URL is:
+/employees/5
+
+
+Then:
+id = 5
+
+---------------------------------------------------------------------------
+
+3. PUT — Update Resource
+@PutMapping("/employees/{id}")
+public Employee updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
+    return employeeService.updateEmployee(id, employee);
+}
+
+---------------------------------------------------------------------------
+
+4. DELETE — Delete Resource
+@DeleteMapping("/employees/{id}")
+public void deleteEmployee(@PathVariable Long id) {
+    employeeService.deleteEmployee(id);
+}
+
+## Full API List
+Method  	URL	              Work
+POST	  /employees	      Create employee
+GET	    /employees	      Get all
+GET	    /employees/{id}	  Get by id
+PUT	    /employees/{id}	  Update
+DELETE	/employees/{id}	  Delete
+
+## Full Request Flow
+Client → Controller → Service → Repository → Database
+
+## Testing APIs
+
+We use:
+Postman
+
+## Why REST APIs are Important?
+
+-> Used by frontend (React, Angular, Mobile apps)
+-> Used by other systems
+-> Standard way of building backend
+
+## Summary 
+REST API is used to communicate between client and server using HTTP methods like GET, POST, PUT, DELETE. CRUD means Create, Read, Update, Delete. In Spring Boot we use annotations like @PostMapping, @GetMapping, @PutMapping, @DeleteMapping.
