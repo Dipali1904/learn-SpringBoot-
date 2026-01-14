@@ -28,7 +28,6 @@ With exception handling:
 
 ## Custom Exception Example
 
-```java
 public class EmployeeNotFoundException extends RuntimeException {
     public EmployeeNotFoundException(String message) {
         super(message);
