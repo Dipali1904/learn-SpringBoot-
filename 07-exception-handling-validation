@@ -129,6 +129,93 @@ Controller → Exception → ControllerAdvice → Proper Response
 
 ---------------------------------------------------------------------
 
+## @ControllerAdvice means:
+
+-> One common place to handle errors for the whole application
+-> @ControllerAdvice is used for global exception handling in Spring Boot.
+
+@ControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(EmployeeNotFoundException.class)
+    public ResponseEntity<String> handle(EmployeeNotFoundException ex) {
+        return ResponseEntity.status(404).body(ex.getMessage());
+    }
+}
+
+It means:
+
+"If EmployeeNotFoundException happens anywhere, handle it here."
+
+## Flow in simple words
+Controller throws error
+↓
+Spring looks for @ControllerAdvice
+↓
+Finds matching @ExceptionHandler
+↓
+Returns clean error message to user
+
+## Why we need it?
+
+Without @ControllerAdvice:
+Ugly error page
+Stack trace
+500 error
+
+With @ControllerAdvice:
+Clean JSON message
+Proper HTTP status
+Professional API
+
+---------------------------------------------------------------------
+
+## What is @ExceptionHandler? (Very simple)
+
+@ExceptionHandler means:
+-> This method will handle this specific error
+-> @ExceptionHandler is used to handle a specific exception and return a custom response.
+
+* In Spring Boot
+@ControllerAdvice = Hospital
+@ExceptionHandler = Specialist doctor
+
+Example
+@ExceptionHandler(EmployeeNotFoundException.class)
+public ResponseEntity<String> handle(EmployeeNotFoundException ex) {
+    return ResponseEntity.status(404).body(ex.getMessage());
+}
+
+## What does this mean?
+
+It means:
+"If EmployeeNotFoundException happens, call this method"
+---------------------------------------------------------------------
+## Flow in simple words
+Service throws EmployeeNotFoundException
+↓
+Spring searches for @ExceptionHandler(EmployeeNotFoundException)
+↓
+Finds this method
+↓
+Runs this method
+↓
+Returns proper message
+---------------------------------------------------------------------
+## Best Practice (What companies do):
+@ControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(EmployeeNotFoundException.class)
+    public ResponseEntity<String> handle(...) { }
+
+    @ExceptionHandler(InvalidDataException.class)
+    public ResponseEntity<String> handle(...) { }
+}
+One place. All errors handled.
+
+---------------------------------------------------------------------
+
 ## Why This is Important?
 
 -> Prevents bad data
