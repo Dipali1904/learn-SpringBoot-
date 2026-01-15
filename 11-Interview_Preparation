@@ -1,0 +1,79 @@
+## Spring Boot
+
+Q: What is Spring Boot?
+Spring Boot is a framework used to build production-ready Spring applications quickly.
+
+Q: Why Spring Boot?
+It reduces configuration and provides auto-configuration.
+
+Q: What is @SpringBootApplication?
+It is the main annotation that starts Spring Boot app.
+
+## REST
+
+Q: What is REST API?
+REST API is an API that uses HTTP methods like GET, POST, PUT, DELETE.
+
+Q: What is @RestController?
+It is used to create REST APIs that return JSON.
+
+## JPA
+
+Q: What is JPA?
+JPA is a standard API to interact with database.
+
+Q: What is Hibernate?
+Hibernate is an implementation of JPA.
+
+Q: What is ORM?
+ORM maps Java objects to database tables.
+
+## Spring Core
+
+Q: What is Dependency Injection?
+Spring creates and injects objects automatically.
+
+Q: What is @Autowired?
+It tells Spring to inject dependency.
+
+## Exception & Validation
+
+Q: How do you handle exception?
+Using @ControllerAdvice and @ExceptionHandler.
+
+Q: How do you validate input?
+Using @Valid, @NotBlank, @Email.
+
+## DTO & Pagination
+
+Q: Why DTO?
+To avoid exposing entity directly.
+
+Q: What is pagination?
+Loading data page by page.
+
+## Swagger
+
+Q: Why Swagger?
+For API documentation and testing.
+
+## Security
+
+Q: What is Spring Security?
+Used to protect APIs using authentication.
+
+## AWS
+
+Q: How did you deploy?
+Using AWS EC2 and RDS conceptually.
+
+## Java
+
+Q: final vs finally vs finalize?
+final = constant, finally = block, finalize = GC method.
+
+Q: What is Optional?
+Avoids NullPointerException.
+
+Q: What is Stream?
+Used for functional data processing.
