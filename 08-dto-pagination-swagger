@@ -1,0 +1,112 @@
+## 1. DTO (Data Transfer Object)
+
+What is DTO?
+DTO is a simple Java class used to transfer data between layers.
+We do NOT expose Entity directly to the client.
+DTO is used to transfer data between layers and avoid exposing entities directly.
+
+## Why DTO is needed?
+
+To hide internal database structure
+To control what data goes to client
+To improve security
+To avoid sending unnecessary fields
+
+## Example
+❌ Entity (Internal)
+Employee {
+   id
+   name
+   email
+}
+
+✅ DTO (What client sees)
+EmployeeDTO {
+   id
+   name
+}
+
+## Conversion Logic
+private EmployeeDTO convertToDTO(Employee emp) {
+    EmployeeDTO dto = new EmployeeDTO();
+    dto.setId(emp.getId());
+    dto.setName(emp.getName());
+    return dto;
+}
+
+## Where we used DTO?
+
+In getAllEmployees()
+In pagination API
+To return clean response to client
+
+## 2. Pagination
+
+-> To improve performance when large data exists.
+-> Pagination means getting data page by page instead of loading everything at once.
+
+## Why Pagination?
+If database has:
+    1,00,000 records
+
+Loading all at once will:
+❌ Slow server
+❌ Crash UI
+❌ Waste memory
+
+## Example API
+GET /employees/paged?page=0&size=2
+
+This means:
+Page = 0
+Size = 2 records per page
+
+## Code Concept
+PageRequest.of(page, size)
+
+## Benefits: 
+Faster API
+Better performance
+Used in ALL real-world projects
+
+## 3. Swagger (API Documentation)
+
+## What is Swagger?
+-> Swagger is used for API documentation and testing.
+-> Swagger is a tool that automatically generates API documentation and provides a UI to:
+    See all APIs
+    Test APIs
+    See request/response format
+
+## How to open Swagger?
+
+Open in browser:
+http://localhost:8080/swagger-ui/index.html
+
+## What can we do in Swagger?
+
+Test GET, POST, PUT, DELETE APIs
+See JSON format
+See API responses
+No need Postman
+
+## Why Swagger is used in companies?
+
+Backend + Frontend + QA use same documentation
+No need to explain APIs manually
+Always up-to-date
+Acts as API contract
+
+Example: Create Employee
+Request:
+{
+  "name": "Dipali",
+  "email": "dipali@gmail.com"
+}
+
+Response:
+{
+  "id": 3,
+  "name": "Dipali",
+  "email": "dipali@gmail.com"
+}
