@@ -1,0 +1,83 @@
+## What is Cloud?
+Cloud means running applications on remote servers on the internet instead of your own computer.
+
+Example:
+Instead of running app on your laptop
+You run it on a server that anyone can access via internet
+
+## What is AWS?
+
+AWS (Amazon Web Services) is a cloud platform that provides:
+Virtual servers
+Databases
+Storage
+Networking
+
+## What is EC2?
+
+EC2 (Elastic Compute Cloud) is a virtual computer in the cloud.
+It is used to:
+Run Spring Boot application
+Host backend services
+Make app available on internet
+
+## What is RDS?
+RDS (Relational Database Service) is a managed cloud database service.
+
+Used to:
+Host MySQL / PostgreSQL / etc in cloud
+Avoid installing database on server manually
+
+## Real Project Architecture
+User Browser
+    ↓
+EC2 (Spring Boot Application)
+    ↓
+RDS (MySQL Database)
+
+## What is JAR?
+
+JAR is a packaged Java application file that contains:
+Your code
+Dependencies
+Configurations
+
+## How Spring Boot is Deployed 
+
+Build jar:
+mvn clean package
+Create EC2 server
+Install Java on EC2
+Upload jar file
+
+Run:
+java -jar app.jar
+
+Access app:
+http://ec2-ip:8080
+
+## Database Configuration
+
+In production, we use:
+AWS RDS instead of local DB
+
+Change in application.properties:
+spring.datasource.url=jdbc:mysql://rds-endpoint:3306/db
+spring.datasource.username=admin
+spring.datasource.password=pass
+
+## Interview Answers
+What is cloud?
+Cloud means running applications on remote servers over internet.
+
+What is AWS?
+AWS is Amazon’s cloud platform.
+
+What is EC2?
+EC2 is a virtual server in AWS used to run applications.
+
+What is RDS?
+RDS is a managed cloud database service.
+
+How did you deploy your project?
+I built a jar using Maven and deployed it on AWS EC2. Database was hosted on AWS RDS.
