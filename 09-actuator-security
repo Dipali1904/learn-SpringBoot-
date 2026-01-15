@@ -1,0 +1,106 @@
+## Spring Boot Actuator
+
+What is Actuator?
+Spring Boot Actuator provides production-ready endpoints to monitor the application.
+
+It tells:
+Is app running?
+Is DB connected?
+Health status
+Memory, CPU, metrics
+
+## Why Actuator is used?
+
+In real projects:
+-> DevOps & developers need to check app health
+-> To monitor application without logging into server
+
+## Example Endpoints
+/actuator/health
+/actuator/info
+/actuator/metrics
+
+## How to enable Actuator?
+
+Add dependency:
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+
+## In application.properties:
+management.endpoints.web.exposure.include=health,info
+
+## Test
+Open:
+http://localhost:8080/actuator/health
+
+Response:
+{
+  "status": "UP"
+}
+
+## Spring Security
+
+What is Spring Security?
+Spring Security is used to secure APIs using login & password.
+
+## Why we need Security?
+
+Without security:
+Anyone can access APIs
+Anyone can delete or update data
+
+With security:
+Only authorized users can access APIs
+
+## How to enable Security?
+
+Add dependency:
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+
+Restart app.
+
+Now:
+All APIs are protected
+Browser asks for login
+
+## Default Credentials
+Username: user
+Password: shown in console
+
+## Set your own credentials
+
+In application.properties:
+spring.security.user.name=admin
+spring.security.user.password=admin123
+
+## Important Concepts
+Authentication : Authentication means verifying username and password.
+
+Authorization : Authorization means checking what user is allowed to do.
+
+## INTERVIEW QUESTIONS & ANSWERS 
+Q: What is Spring Boot Actuator?
+Spring Boot Actuator provides monitoring and health endpoints for production applications.
+
+Q: Why do we use Actuator?
+To check application health, metrics, and runtime information.
+
+Q: What is /actuator/health?
+It shows whether application is UP or DOWN.
+
+Q: What is Spring Security?
+Spring Security is used to secure applications using authentication and authorization.
+
+Q: What is authentication?
+Authentication means verifying username and password.
+
+Q: What is authorization?
+Authorization means checking what access a user has.
+
+Q: How did you secure your APIs?
+I used Spring Security starter and configured basic username/password in application.properties.
